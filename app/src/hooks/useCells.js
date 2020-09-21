@@ -2,24 +2,26 @@ import { useState } from 'react';
 
 export const useCells = gridSize => {
   
-  const [cells, setCells] = useState(createGridObj(gridSize));
+  const [cells, setCells] = useState(createGrid(gridSize));
   
-  const toggleCell = cell => {
-    setCells({
+  const toggleCell = (row, column) => {
+    setCells([
       ...cells,
-      [cell]: !cells[cell]
-    });
+      cells[row][column] = !cells[row][column]
+    ]);
   };
 
   return [cells, toggleCell];
 };
 
-const createGridObj = gridSize => {
-  const gridObj = {};
+const createGrid = gridSize => {
+  const grid = [];
   for (let i = 0; i < gridSize; i++) {
+    const gridRow = [];
     for (let j = 0; j < gridSize; j++) {
-      gridObj[`${i}:${j}`] = false;
+      gridRow.push(false)
     }
+    grid.push(gridRow);
   }
-  return gridObj;
+  return grid;
 };

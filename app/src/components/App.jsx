@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Grid containerSize={500} cells={cells}/>
+      <Grid containerSize={600} cells={cells} gridSize={gridSize} />
     </div>
   );
 };

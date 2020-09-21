@@ -1,3 +1,11 @@
-.Grid {
+.Grid, .Cell {
   border: 1px solid black;
+}
+
+.Grid {
+  @include flex(row, flex-start, flex-start);
+}
+
+.Cell {
+
 }
