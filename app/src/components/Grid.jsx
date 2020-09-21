@@ -7,7 +7,7 @@ const Grid = props => {
 
   return (
     <div className='Grid' style={{ 'width': `${containerSize}px`, 'height': `${containerSize}px` }}>
-      {cells && cells.map(row => <CellRow row={row} size={containerSize / gridSize - 1}/>)}
+      {cells && cells.map((row, i) => <CellRow key={`row:${i}`} row={row} rowIndex={i} size={containerSize / gridSize - 1}/>)}
     </div>
   );
 };
