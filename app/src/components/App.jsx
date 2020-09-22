@@ -8,7 +8,7 @@ const containerSize = 600;
 
 const App = () => {
 
-  const [gridSize, setGridSize] = useState(10);
+  const [gridSize, setGridSize] = useState(25);
   const [mouseDown, setMouseDown] = useState(false);
   const [cells, changeCell, setCells, clear] = useCells(gridSize);
   const [initCells,, setInitCells] = useCells(gridSize);
