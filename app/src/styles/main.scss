@@ -5,7 +5,7 @@
 .css-grid-flex {
   margin: 3rem auto;
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 22% 56% 22%;
 }
 
 header {
@@ -23,14 +23,20 @@ header {
 
 .PresetList {
   grid-column: 3 / 3;
+  justify-self: start;
+  @include flex(row, flex-start, flex-start);
 }
 
 .Preset {
-  margin: 1rem 0;
-  border: 1px solid gray;
+  margin: 0 1rem;
+  width: 10rem;
+  height: 10rem;
+  img {
+    border: 1px solid gray;
+  }
 }
 
 .Cell {
-  border: 1px solid gray;
+  border: 1px solid rgb(184, 184, 184);
   -webkit-user-select: none;
 }
