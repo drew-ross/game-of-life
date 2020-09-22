@@ -4,7 +4,7 @@ import Grid from './Grid';
 import GameController from './GameController';
 import { useCells } from '../hooks/useCells';
 
-const gridSize = 20;
+const gridSize = 25;
 const containerSize = 600;
 
 const App = () => {
@@ -19,7 +19,6 @@ const App = () => {
     if (mouseDown) {
       changeCell(currentXY.row, currentXY.col, cellTo);
     }
-    console.log('check');
   }, [currentXY, mouseDown]);
 
   const cellClick = (alive, active) => {
