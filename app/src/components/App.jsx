@@ -4,16 +4,24 @@ import Grid from './Grid';
 import GameController from './GameController';
 import { useCells } from '../hooks/useCells';
 
-const gridSize = 25;
 const containerSize = 600;
 
 const App = () => {
 
+  const [gridSize, setGridSize] = useState(10);
   const [mouseDown, setMouseDown] = useState(false);
   const [cells, changeCell, setCells, clear] = useCells(gridSize);
   const [initCells,, setInitCells] = useCells(gridSize);
   const [currentXY, setCurrentXY] = useState({ row: null, col: null });
   const [cellTo, setCellTo] = useState(false);
+  const [cellSize, setCellSize] = useState(containerSize / gridSize - 1);
+
+  useEffect(() => {
+    console.log(gridSize)
+    console.log(containerSize)
+    setCellSize(containerSize / gridSize - 1)
+    clear(gridSize);
+  }, [gridSize])
 
   useEffect(() => {
     if (mouseDown) {
@@ -30,7 +38,7 @@ const App = () => {
     containerSize,
     cells,
     gridSize,
-    cellSize: (containerSize / gridSize) - 1,
+    cellSize,
     setCurrentXY,
     cellClick,
   };
@@ -40,7 +48,9 @@ const App = () => {
     setCells,
     initCells,
     setInitCells,
-    clear
+    clear,
+    gridSize,
+    setGridSize
   }
 
   return (

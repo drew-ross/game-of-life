@@ -3,14 +3,15 @@ import { calculateCells } from '../functions/calculateCells';
 
 const GameController = props => {
 
-  const { cells, setCells, initCells, setInitCells, clear } = props.cellProps;
+  const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.cellProps;
   const [isRunning, setIsRunning] = useState(false);
   const [isClearOrStopped, setIsClearOrStopped] = useState(true);
   const [generations, setGenerations] = useState(0);
+  const [inputSize, setInputSize] = useState(gridSize);
 
   useEffect(() => {
     if (isRunning) {
-      const interval = setInterval(() => step(), 50);
+      const interval = setInterval(() => step(), 250);
       return () => clearInterval(interval);
     }
   });
@@ -40,11 +41,37 @@ const GameController = props => {
   const clearCells = () => {
     clear();
     setIsClearOrStopped(true);
-  }
+  };
+
+  const handleInput = e => {
+    let input = Number(e.target.value);
+    const min = Number(e.target.min);
+    const max = Number(e.target.max);
+    if (input < min) {
+      input = min;
+    }
+    if (input > max) {
+      input = max;
+    }
+    setInputSize(input);
+  };
+
+  const handleChangeGridSize = e => {
+    setGridSize(inputSize);
+  };
 
   return (
     <div className='GameController'>
       <div className='buttons'>
+        <label>Board Size:
+          <input
+            min='4'
+            max='30'
+            value={inputSize}
+            type='number'
+            onChange={handleInput}
+          ></input><span>x {inputSize}</span>
+        </label><button onClick={handleChangeGridSize}>Set</button><br />
         <button disabled={isRunning} onClick={startGame}>Start</button>
         <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
         <button disabled={isClearOrStopped} onClick={stopGame}>Stop</button>

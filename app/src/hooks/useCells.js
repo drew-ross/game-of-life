@@ -10,8 +10,8 @@ export const useCells = gridSize => {
     setCells(newCells);
   };
 
-  const clear = () => {
-    setCells(createGrid(gridSize));
+  const clear = (size = gridSize) => {
+    setCells(createGrid(size));
   }
 
   return [cells, changeCell, setCells, clear];

@@ -2,6 +2,10 @@ h1 {
   font-size: 3rem;
 }
 
-p, button {
+p, button, input, label {
   font-size: 2rem;
+}
+
+input {
+  width: 5rem;
 }
