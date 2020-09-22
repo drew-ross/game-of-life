@@ -76,7 +76,7 @@ const GameController = props => {
           setSpeedInterval(500);
           break;
         case 3:
-          setSpeedInterval(200);
+          setSpeedInterval(150);
         default:
           break;
       }
