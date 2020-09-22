@@ -1,0 +1,19 @@
+.App > * {
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  h1 {
+    margin: 3rem;
+  }
+}
+
+.Grid {
+  @include flex(row, center, center);
+}
+
+.Cell {
+  border: 1px solid gray;
+  -webkit-user-select: none;
+}
