@@ -5,7 +5,7 @@ const GameController = props => {
 
   const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.cellProps;
   const [isRunning, setIsRunning] = useState(false);
-  const [isClearOrStopped, setIsClearOrStopped] = useState(true);
+  const [isClear, setIsClear] = useState(true);
   const [generations, setGenerations] = useState(0);
   const [inputSize, setInputSize] = useState(gridSize);
   const [speedInterval, setSpeedInterval] = useState(500);
@@ -25,9 +25,11 @@ const GameController = props => {
   };
 
   const startGame = () => {
-    setInitCells(cells);
+    if (isClear) {
+      setInitCells(cells);
+    }
     setIsRunning(true);
-    setIsClearOrStopped(false);
+    setIsClear(false);
   };
 
   const pauseGame = () => {
@@ -36,14 +38,14 @@ const GameController = props => {
 
   const stopGame = () => {
     setIsRunning(false);
-    setIsClearOrStopped(true);
+    setIsClear(true);
     setGenerations(0);
     setCells(initCells);
   };
 
   const clearCells = () => {
     clear();
-    setIsClearOrStopped(true);
+    setIsClear(true);
   };
 
   const handleInput = e => {
@@ -105,7 +107,7 @@ const GameController = props => {
         </label><br />
         <button disabled={isRunning} onClick={startGame}>Start</button>
         <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
-        <button disabled={isClearOrStopped} onClick={stopGame}>Stop</button>
+        <button disabled={isClear} onClick={stopGame}>Stop</button>
         <br />
         <button disabled={isRunning} onClick={clearCells}>Clear Cells</button>
       </div>
