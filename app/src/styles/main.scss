@@ -1,5 +1,5 @@
-.App > * {
-  margin: auto;
+.container {
+  text-align: center;
 }
 
 header {
@@ -10,6 +10,7 @@ header {
 }
 
 .Grid {
+  margin: 2rem auto;
   @include flex(row, center, center);
 }
 
