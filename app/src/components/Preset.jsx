@@ -2,10 +2,14 @@ import React from 'react';
 
 const Preset = props => {
 
-  const { image } = props;
+  const { selectPreset } = props;
+  const { image, data } = props.preset;
 
   return (
-    <div className='Preset'>
+    <div
+      className='Preset'
+      onClick={() => selectPreset(data)}
+    >
       <img src={image} />
     </div>
   );

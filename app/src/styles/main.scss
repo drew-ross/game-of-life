@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.css-grid-flex {
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
 header {
   text-align: center;
   h1 {
@@ -10,8 +16,18 @@ header {
 }
 
 .Grid {
-  margin: 2rem auto;
+  margin: 0 auto;
   @include flex(row, center, center);
+  grid-column: 2 / 2;
+}
+
+.PresetList {
+  grid-column: 3 / 3;
+}
+
+.Preset {
+  margin: 1rem 0;
+  border: 1px solid gray;
 }
 
 .Cell {
