@@ -12,12 +12,12 @@ const App = () => {
   const [mouseDown, setMouseDown] = useState(false);
   const [cells, changeCell, setCells, clear] = useCells(gridSize);
   const [initCells,, setInitCells] = useCells(gridSize);
-  const [currentXY, setCurrentXY] = useState({ x: null, y: null });
+  const [currentXY, setCurrentXY] = useState({ row: null, col: null });
   const [cellTo, setCellTo] = useState(false);
 
   useEffect(() => {
     if (mouseDown) {
-      changeCell(currentXY.x, currentXY.y, cellTo);
+      changeCell(currentXY.row, currentXY.col, cellTo);
     }
     console.log('check');
   }, [currentXY, mouseDown]);

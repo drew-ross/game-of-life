@@ -17,7 +17,7 @@ const Cell = props => {
       className='Cell'
       size={cellSize}
       cell={cell}
-      onMouseOver={() => setCurrentXY({ x: rowIndex, y: columnIndex })}
+      onMouseOver={() => setCurrentXY({ row: rowIndex, col: columnIndex })}
       onMouseDown={() => cellClick(!cell, true)}
       onMouseUp={() => cellClick(!cell, false)}
     >
