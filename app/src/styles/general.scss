@@ -1,3 +1,11 @@
 h1 {
   font-size: 3rem;
 }
+
+p, button, input, label {
+  font-size: 2rem;
+}
+
+input[type=number] {
+  width: 5rem;
+}

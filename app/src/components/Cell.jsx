@@ -10,14 +10,14 @@ const StyledCell = styled.div`
 const Cell = props => {
 
   const { cell, rowIndex, columnIndex } = props;
-  const { cellSize, setCurrentXY, cellClick } = props.grid;
+  const { cellSize, setCurrentXY, cellClick } = props.gridProps;
 
   return (
     <StyledCell
       className='Cell'
       size={cellSize}
       cell={cell}
-      onMouseOver={() => setCurrentXY({ x: rowIndex, y: columnIndex })}
+      onMouseOver={() => setCurrentXY({ row: rowIndex, col: columnIndex })}
       onMouseDown={() => cellClick(!cell, true)}
       onMouseUp={() => cellClick(!cell, false)}
     >

@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Grid from './Grid';
+import GameController from './GameController';
 import { useCells } from '../hooks/useCells';
 
-const gridSize = 20;
 const containerSize = 600;
 
 const App = () => {
 
+  const [gridSize, setGridSize] = useState(25);
   const [mouseDown, setMouseDown] = useState(false);
-  const [cells, changeCell] = useCells(gridSize);
-  const [currentXY, setCurrentXY] = useState({ x: null, y: null });
+  const [cells, changeCell, setCells, clear] = useCells(gridSize);
+  const [initCells,, setInitCells] = useCells(gridSize);
+  const [currentXY, setCurrentXY] = useState({ row: null, col: null });
   const [cellTo, setCellTo] = useState(false);
+  const [cellSize, setCellSize] = useState(containerSize / gridSize - 1);
+
+  useEffect(() => {
+    console.log(gridSize)
+    console.log(containerSize)
+    setCellSize(containerSize / gridSize - 1)
+    clear(gridSize);
+  }, [gridSize])
 
   useEffect(() => {
     if (mouseDown) {
-      changeCell(currentXY.x, currentXY.y, cellTo);
+      changeCell(currentXY.row, currentXY.col, cellTo);
     }
-    console.log('check');
   }, [currentXY, mouseDown]);
 
   const cellClick = (alive, active) => {
@@ -25,20 +34,32 @@ const App = () => {
     setMouseDown(active);
   };
 
-  const [grid] = useState({
+  const gridProps = {
     containerSize,
     cells,
     gridSize,
-    cellSize: (containerSize / gridSize) - 1,
+    cellSize,
     setCurrentXY,
     cellClick,
-  });
+  };
 
+  const cellProps = {
+    cells,
+    setCells,
+    initCells,
+    setInitCells,
+    clear,
+    gridSize,
+    setGridSize
+  }
 
   return (
-    <div className="App">
-      <Header />
-      <Grid grid={grid} />
+    <div className='App'>
+      <div className='container'>
+        <Header />
+        <Grid gridProps={gridProps} />
+        <GameController cellProps={cellProps} />
+      </div>
     </div>
   );
 };
