@@ -1,11 +1,19 @@
-.Grid, .Cell {
-  border: 1px solid black;
+.App > * {
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  h1 {
+    margin: 3rem;
+  }
 }
 
 .Grid {
-  @include flex(row, flex-start, flex-start);
+  @include flex(row, center, center);
 }
 
 .Cell {
-
+  border: 1px solid gray;
+  -webkit-user-select: none;
 }

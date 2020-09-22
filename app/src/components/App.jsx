@@ -1,27 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Grid from './Grid';
 import { useCells } from '../hooks/useCells';
 
-const gridSize = 25;
+const gridSize = 20;
+const containerSize = 600;
 
 const App = () => {
 
   const [mouseDown, setMouseDown] = useState(false);
-  const [cells, toggleCell] = useCells(gridSize);
+  const [cells, changeCell] = useCells(gridSize);
+  const [currentXY, setCurrentXY] = useState({ x: null, y: null });
+  const [cellTo, setCellTo] = useState(false);
 
-  window.addEventListener('mousedown', e => {
-    setMouseDown(true);
-  })
-  
-  window.addEventListener('mouseup', e => {
-    setMouseDown(false);
-  })
+  useEffect(() => {
+    if (mouseDown) {
+      changeCell(currentXY.x, currentXY.y, cellTo);
+    }
+    console.log('check');
+  }, [currentXY, mouseDown]);
+
+  const cellClick = (alive, active) => {
+    setCellTo(alive);
+    setMouseDown(active);
+  };
+
+  const [grid] = useState({
+    containerSize,
+    cells,
+    gridSize,
+    cellSize: (containerSize / gridSize) - 1,
+    setCurrentXY,
+    cellClick,
+  });
+
 
   return (
     <div className="App">
       <Header />
-      <Grid containerSize={600} cells={cells} gridSize={gridSize} tc={toggleCell} mD={mouseDown}/>
+      <Grid grid={grid} />
     </div>
   );
 };

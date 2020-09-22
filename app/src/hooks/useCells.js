@@ -3,25 +3,14 @@ import { useState } from 'react';
 export const useCells = gridSize => {
 
   const [cells, setCells] = useState(createGrid(gridSize));
-
-  const toggleCell = (row, column) => {
-    setCells(cells.map((r, i) => {
-      if (i === row) {
-        return r.map((c, j) => {
-          if (j === column) {
-            return !c;
-          } else {
-            return c;
-          }
-        });
-      }
-      else {
-        return r;
-      }
-    }));
+  
+  const changeCell = (row, column, alive) => {
+    let newCells = cells;
+    newCells[row][column] = alive;
+    setCells(newCells);
   };
 
-  return [cells, toggleCell];
+  return [cells, changeCell];
 };
 
 const createGrid = gridSize => {

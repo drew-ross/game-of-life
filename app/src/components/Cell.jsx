@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledCell = styled.div`
@@ -9,20 +9,17 @@ const StyledCell = styled.div`
 
 const Cell = props => {
 
-  const { size, cell, rowIndex, columnIndex, toggleCell, mD } = props;
-
-  const onClick = e => {
-    if (mD) {
-      toggleCell(rowIndex, columnIndex);
-    }
-  };
+  const { cell, rowIndex, columnIndex } = props;
+  const { cellSize, setCurrentXY, cellClick } = props.grid;
 
   return (
     <StyledCell
       className='Cell'
-      size={size}
+      size={cellSize}
       cell={cell}
-      onMouseOver={onClick}
+      onMouseOver={() => setCurrentXY({ x: rowIndex, y: columnIndex })}
+      onMouseDown={() => cellClick(!cell, true)}
+      onMouseUp={() => cellClick(!cell, false)}
     >
 
     </StyledCell>
