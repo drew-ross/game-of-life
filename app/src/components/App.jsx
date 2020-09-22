@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Grid from './Grid';
 import GameController from './GameController';
+import PresetList from './PresetList';
 import { useCells } from '../hooks/useCells';
 
 const containerSize = 600;
@@ -58,6 +59,7 @@ const App = () => {
       <div className='container'>
         <Header />
         <Grid gridProps={gridProps} />
+        <PresetList />
         <GameController cellProps={cellProps} />
       </div>
     </div>
