@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-.css-grid-flex {
-  margin: 3rem auto;
-  display: grid;
-  grid-template-columns: 22% 56% 22%;
-}
-
 header {
   text-align: center;
   h1 {
@@ -15,22 +9,68 @@ header {
   }
 }
 
+.css-grid {
+  width: 120rem;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-areas: "controller grid presets";
+  grid-template-columns: 28rem auto 28rem;
+  @media #{$tablet-mobile} {
+    grid-template-columns: none;
+    grid-template-areas:
+      "presets"
+      "grid"
+      "controller";
+  }
+}
+
+.GameController {
+  grid-column: 1 / 1;
+  justify-self: end;
+  grid-area: controller;
+
+  @media #{$tablet-mobile} {
+    @include flex(column, center, center);
+    justify-self: center;
+
+    .flex-row {
+      width: 35rem;
+      margin-top: 0rem;
+      @include flex(row, space-between, center);
+
+      & > * {
+        width: 10rem;
+      }
+    }
+  }
+}
+
 .Grid {
-  margin: 0 auto;
   @include flex(row, center, center);
-  grid-column: 2 / 2;
+  margin: -2rem auto 0;
+  grid-area: grid;
+
+  @media #{$tablet-mobile} {
+    margin: 3rem auto;
+  }
 }
 
 .PresetList {
+  @include flex(row, flex-start, flex-start);
   grid-column: 3 / 3;
   justify-self: start;
-  @include flex(row, flex-start, flex-start);
+  grid-area: presets;
+
+  @media #{$tablet-mobile} {
+    justify-self: center;
+  }
 }
 
 .Preset {
   margin: 0 1rem;
   width: 10rem;
   height: 10rem;
+
   img {
     border: 1px solid gray;
   }
@@ -39,4 +79,5 @@ header {
 .Cell {
   border: 1px solid rgb(184, 184, 184);
   -webkit-user-select: none;
+  box-shadow: 0 0 0.5rem black;
 }

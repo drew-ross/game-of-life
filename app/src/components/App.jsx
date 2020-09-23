@@ -61,11 +61,11 @@ const App = () => {
     <div className='App'>
       <div className='container'>
         <Header />
-        <div className='css-grid-flex'>
+        <div className='css-grid'>
+          <GameController cellProps={cellProps} />
           <Grid gridProps={gridProps} />
           <PresetList selectPreset={selectPreset} />
         </div>
-        <GameController cellProps={cellProps} />
       </div>
     </div>
   );

@@ -13,11 +13,14 @@ const GameController = props => {
 
   useEffect(() => {
     if (isRunning) {
-      console.log(speedInterval);
       const interval = setInterval(() => step(), speedInterval);
       return () => clearInterval(interval);
     }
   });
+
+  useEffect(() => {
+    setInputSize(gridSize);
+  }, [gridSize]);
 
   const step = () => {
     setCells(calculateCells(cells));
@@ -85,18 +88,29 @@ const GameController = props => {
 
   return (
     <div className='GameController'>
-      <div className='buttons'>
+      <div className='flex-row'>
+        <button disabled={isRunning} onClick={startGame}>Start</button>
+        <br />
+        <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
+        <br />
+        <button disabled={isClear} onClick={stopGame}>Stop</button>
+      </div>
+      <br />
+      <div className='flex-row'>
         <label>Board Size:
-          <br />
+        <br />
           <input
             type='number'
             min='4'
             max='30'
             value={inputSize}
             onChange={handleInput}
-          ></input><span>x {inputSize}</span>
-        </label><button onClick={handleChangeGridSize}>Set</button><br />
-        <label>Speed:
+          ></input><span> x {inputSize}</span>
+        </label>
+        <br />
+        <button onClick={handleChangeGridSize}>Resize</button>
+        <br />
+        <label>Speed {speedRange}
           <br />
           <input
             type='range'
@@ -104,14 +118,13 @@ const GameController = props => {
             max='3'
             value={speedRange}
             onChange={handleRange}></input>
-        </label><br />
-        <button disabled={isRunning} onClick={startGame}>Start</button>
-        <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
-        <button disabled={isClear} onClick={stopGame}>Stop</button>
-        <br />
-        <button disabled={isRunning} onClick={clearCells}>Clear Cells</button>
+        </label>
       </div>
-      <p>Generations: {generations}</p>
+      <br />
+      <div className='flex-row'>
+        <button disabled={isRunning} onClick={clearCells}>Clear</button>
+        <p>Generations: {generations}</p>
+      </div>
     </div>
   );
 };
