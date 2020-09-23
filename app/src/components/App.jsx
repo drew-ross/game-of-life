@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Grid from './Grid';
 import GameController from './GameController';
+import PresetList from './PresetList';
 import { useCells } from '../hooks/useCells';
 
 const containerSize = 600;
@@ -11,17 +12,15 @@ const App = () => {
   const [gridSize, setGridSize] = useState(25);
   const [mouseDown, setMouseDown] = useState(false);
   const [cells, changeCell, setCells, clear] = useCells(gridSize);
-  const [initCells,, setInitCells] = useCells(gridSize);
+  const [initCells, , setInitCells] = useCells(gridSize);
   const [currentXY, setCurrentXY] = useState({ row: null, col: null });
   const [cellTo, setCellTo] = useState(false);
   const [cellSize, setCellSize] = useState(containerSize / gridSize - 1);
 
   useEffect(() => {
-    console.log(gridSize)
-    console.log(containerSize)
-    setCellSize(containerSize / gridSize - 1)
+    setCellSize(containerSize / gridSize - 1);
     clear(gridSize);
-  }, [gridSize])
+  }, [gridSize]);
 
   useEffect(() => {
     if (mouseDown) {
@@ -32,6 +31,11 @@ const App = () => {
   const cellClick = (alive, active) => {
     setCellTo(alive);
     setMouseDown(active);
+  };
+
+  const selectPreset = (data) => {
+    setGridSize(25);
+    setCells(data);
   };
 
   const gridProps = {
@@ -51,13 +55,16 @@ const App = () => {
     clear,
     gridSize,
     setGridSize
-  }
+  };
 
   return (
     <div className='App'>
       <div className='container'>
         <Header />
-        <Grid gridProps={gridProps} />
+        <div className='css-grid-flex'>
+          <Grid gridProps={gridProps} />
+          <PresetList selectPreset={selectPreset} />
+        </div>
         <GameController cellProps={cellProps} />
       </div>
     </div>
