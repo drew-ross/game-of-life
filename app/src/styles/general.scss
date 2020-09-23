@@ -3,7 +3,10 @@ h1 {
   font-family: $font-main;
 }
 
-p, button, input, label {
+p,
+button,
+input,
+label {
   font-size: 2rem;
   font-family: $font-main;
 }
@@ -25,11 +28,16 @@ button {
   border: none;
   @include shadow();
 
-  &.secondary {
+  &._primary {
+    background: $color-compliment;
+    color: $color-light;
+  }
+  &._secondary {
     background: $color-lowlight;
   }
   &:hover {
     background: $color-highlight;
+    color: $color-dark;
   }
   &:active {
     outline: 2px solid white;
@@ -39,8 +47,44 @@ button {
   }
 }
 
-input[type=number] {
+input[type="number"] {
   width: 5rem;
+}
+
+input[type="range"] {
+  margin: 1rem auto;
+  -webkit-appearance: none;
+  border: 2px solid $color-dark;
+  background: white;
+  height: 2rem;
+
+  &:disabled {
+    background: gray;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: gray;
+
+      &:hover {
+        background: gray;
+      }
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 2rem;
+    height: 2rem;
+    background: $color-lowlight;
+    border: 2px solid $color-dark;
+
+    &:hover {
+      background: $color-highlight;
+      cursor: pointer;
+    }
+  }
 }
 
 content p {

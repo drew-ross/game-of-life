@@ -7,12 +7,16 @@ html {
   @include shadow();
   background: $color-main;
   padding: .5rem;
+  max-width: 50rem;
 
   &._small {
     width: 12rem;
   }
   &._vmargin {
     margin: 2rem 0;
+  }
+  &._noselect {
+    -webkit-user-select: none;
   }
   &._preset {
     width: 12rem;
@@ -27,11 +31,10 @@ html {
 header {
   text-align: center;
   margin: 4rem auto 5rem;
-  background: $color-main;
-  width: 50rem;
-  height: 8rem;
-  @include shadow();
-  line-height: 8rem;
+  
+  h1 {
+    padding: 2rem 0;
+  }
 }
 
 .css-grid {
@@ -105,8 +108,8 @@ header {
 }
 
 .Cell {
-  background: rgb(6, 14, 17);
+  background: rgb(3, 7, 8);
   border: 1px solid rgb(2, 2, 2);
   -webkit-user-select: none;
-  box-shadow: 0 0 0.5rem rgb(48, 119, 124);
+  box-shadow: 0 0 1rem rgba(48, 119, 124, 0.384);
 }
