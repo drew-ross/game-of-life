@@ -7,7 +7,7 @@ html {
   @include shadow();
   background: $color-main;
   padding: .5rem;
-  max-width: 60rem;
+  max-width: 90rem;
 
   &._small {
     width: 12rem;
@@ -24,17 +24,14 @@ html {
   &._preset {
     width: 12rem;
     height: 16rem;
-
-    &:hover {
-      background: $color-highlight;
-    }
   }
 }
 
 header {
   text-align: center;
   margin: 4rem auto 5rem;
-  
+  width: 60rem;
+
   h1 {
     padding: 2rem 0;
   }
@@ -110,6 +107,13 @@ header {
   img {
     border: 1px solid gray;
   }
+  &:hover {
+    background: $color-highlight;
+    cursor: pointer;
+  }
+  &:active {
+    outline: 2px solid white;
+  }
 }
 
 .Cell {
@@ -117,4 +121,8 @@ header {
   border: 1px solid rgb(2, 2, 2);
   -webkit-user-select: none;
   box-shadow: 0 0 1rem rgba(48, 119, 124, 0.384);
+}
+
+.About {
+  margin: 4rem auto;
 }

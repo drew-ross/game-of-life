@@ -3,6 +3,7 @@ import Header from './Header';
 import Grid from './Grid';
 import GameController from './GameController';
 import PresetList from './PresetList';
+import About from './About';
 import { useCells } from '../hooks/useCells';
 
 const containerSize = 600;
@@ -65,6 +66,7 @@ const App = () => {
         <Grid gridProps={gridProps} />
         <PresetList selectPreset={selectPreset} />
       </div>
+        <About />
     </div>
   );
 };
