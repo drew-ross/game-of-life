@@ -110,7 +110,7 @@ const GameController = props => {
           </label>
         </div>
         <br />
-        <button onClick={handleChangeGridSize}>Resize</button>
+        <button disabled={isRunning} onClick={handleChangeGridSize}>Resize</button>
         <br />
         <div className='container _small _vmargin _noselect'>
           <label>Speed {speedRange}
