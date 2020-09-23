@@ -7,7 +7,7 @@ const Preset = props => {
 
   return (
     <div
-      className='Preset'
+      className='Preset container _preset'
       onClick={() => selectPreset(data)}
     >
       <p>{name}</p>

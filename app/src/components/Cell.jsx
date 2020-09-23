@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledCell = styled.div`
   width: ${props => props.size + 'px'};
   height: ${props => props.size + 'px'};
-  background: ${props => props.cell ? 'black' : 'white'};
+  background: ${props => props.cell ? '#55f8e2' : null};
 `;
 
 const Cell = props => {

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <header>
-            <h1>Game of Life</h1>
+        <header className='container'>
+            <h1>Conway's Game of Life</h1>
         </header>
     );
 };

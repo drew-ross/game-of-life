@@ -13,11 +13,14 @@ const GameController = props => {
 
   useEffect(() => {
     if (isRunning) {
-      console.log(speedInterval);
       const interval = setInterval(() => step(), speedInterval);
       return () => clearInterval(interval);
     }
   });
+
+  useEffect(() => {
+    setInputSize(gridSize);
+  }, [gridSize]);
 
   const step = () => {
     setCells(calculateCells(cells));
@@ -85,33 +88,53 @@ const GameController = props => {
 
   return (
     <div className='GameController'>
-      <div className='buttons'>
-        <label>Board Size:
-          <br />
-          <input
-            type='number'
-            min='4'
-            max='30'
-            value={inputSize}
-            onChange={handleInput}
-          ></input><span>x {inputSize}</span>
-        </label><button onClick={handleChangeGridSize}>Set</button><br />
-        <label>Speed:
-          <br />
-          <input
-            type='range'
-            min='1'
-            max='3'
-            value={speedRange}
-            onChange={handleRange}></input>
-        </label><br />
-        <button disabled={isRunning} onClick={startGame}>Start</button>
-        <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
-        <button disabled={isClear} onClick={stopGame}>Stop</button>
+      <div className='flex-row'>
+        <button className='_primary' disabled={isRunning} onClick={startGame}>Start</button>
         <br />
-        <button disabled={isRunning} onClick={clearCells}>Clear Cells</button>
+        <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
+        <br />
+        <button disabled={isClear} onClick={stopGame}>Stop</button>
       </div>
-      <p>Generations: {generations}</p>
+      <br />
+      <div className='flex-row'>
+        <div className='container _small _noselect'>
+          <label>Size:
+        <br />
+            <input
+              type='number'
+              min='4'
+              max='30'
+              value={inputSize}
+              onChange={handleInput}
+            ></input>
+          </label>
+        </div>
+        <br />
+        <button onClick={handleChangeGridSize}>Resize</button>
+        <br />
+        <div className='container _small _vmargin _noselect'>
+          <label>Speed {speedRange}
+            <br />
+            <input
+              type='range'
+              min='1'
+              max='3'
+              value={speedRange}
+              onChange={handleRange}
+              disabled={isRunning}
+            ></input>
+          </label>
+        </div>
+      </div>
+      <br />
+      <div className='flex-row'>
+        <button className='_secondary' disabled={isRunning} onClick={clearCells}>Clear</button>
+        <p className='container _small'>
+          <span className='font-smaller'>Generations:</span>
+          <br />
+          <span className='font-bigger'>{generations}</span>
+        </p>
+      </div>
     </div>
   );
 };
