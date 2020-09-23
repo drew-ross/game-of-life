@@ -1,3 +1,7 @@
+* {
+  color: $color-dark;
+}
+
 h1,
 h2 {
   font-family: $font-main;
@@ -32,7 +36,6 @@ button {
   height: 4rem;
   margin: 1rem 0;
   background: $color-main;
-  color: $color-dark;
   border: none;
   @include shadow();
 
@@ -101,7 +104,7 @@ input[type="range"] {
 }
 
 a {
-  color: darken($color-lowlight, 20);
+  color: darken($color-lowlight, 30);
 }
 
 .content {
