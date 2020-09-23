@@ -97,33 +97,41 @@ const GameController = props => {
       </div>
       <br />
       <div className='flex-row'>
-        <label>Board Size:
+        <div className='container _small'>
+          <label>Size:
         <br />
-          <input
-            type='number'
-            min='4'
-            max='30'
-            value={inputSize}
-            onChange={handleInput}
-          ></input><span> x {inputSize}</span>
-        </label>
+            <input
+              type='number'
+              min='4'
+              max='30'
+              value={inputSize}
+              onChange={handleInput}
+            ></input>
+          </label>
+        </div>
         <br />
         <button onClick={handleChangeGridSize}>Resize</button>
         <br />
-        <label>Speed {speedRange}
-          <br />
-          <input
-            type='range'
-            min='1'
-            max='3'
-            value={speedRange}
-            onChange={handleRange}></input>
-        </label>
+        <div className='container _small _vmargin'>
+          <label>Speed {speedRange}
+            <br />
+            <input
+              type='range'
+              min='1'
+              max='3'
+              value={speedRange}
+              onChange={handleRange}></input>
+          </label>
+        </div>
       </div>
       <br />
       <div className='flex-row'>
-        <button disabled={isRunning} onClick={clearCells}>Clear</button>
-        <p>Generations: {generations}</p>
+        <button className='secondary' disabled={isRunning} onClick={clearCells}>Clear</button>
+        <p className='container _small'>
+          <span className='font-smaller'>Generations:</span>
+          <br />
+          <span className='font-bigger'>{generations}</span>
+        </p>
       </div>
     </div>
   );

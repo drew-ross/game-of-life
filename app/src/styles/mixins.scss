@@ -5,3 +5,7 @@
   align-items: $align;
   flex-wrap: wrap;
 }
+
+@mixin shadow() {
+  box-shadow: .2rem .2rem 0 .2rem rgba(0, 0, 0, 0.521);
+}

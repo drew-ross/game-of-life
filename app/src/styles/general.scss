@@ -1,17 +1,48 @@
 h1 {
   font-size: 3rem;
+  font-family: $font-main;
 }
 
 p, button, input, label {
   font-size: 2rem;
+  font-family: $font-main;
+}
+
+.font-smaller {
+  font-size: 1.6rem;
+}
+
+.font-bigger {
+  font-size: 2.4rem;
 }
 
 button {
-  width: 10rem;
+  width: 12rem;
   height: 4rem;
   margin: 1rem 0;
+  background: $color-main;
+  color: $color-dark;
+  border: none;
+  @include shadow();
+
+  &.secondary {
+    background: $color-lowlight;
+  }
+  &:hover {
+    background: $color-highlight;
+  }
+  &:active {
+    outline: 2px solid white;
+  }
+  &:disabled {
+    background: gray;
+  }
 }
 
 input[type=number] {
   width: 5rem;
+}
+
+content p {
+  font-family: $font-content;
 }

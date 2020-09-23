@@ -59,13 +59,11 @@ const App = () => {
 
   return (
     <div className='App'>
-      <div className='container'>
-        <Header />
-        <div className='css-grid'>
-          <GameController cellProps={cellProps} />
-          <Grid gridProps={gridProps} />
-          <PresetList selectPreset={selectPreset} />
-        </div>
+      <Header />
+      <div className='css-grid'>
+        <GameController cellProps={cellProps} />
+        <Grid gridProps={gridProps} />
+        <PresetList selectPreset={selectPreset} />
       </div>
     </div>
   );
