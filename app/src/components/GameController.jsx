@@ -9,7 +9,7 @@ const maxGrid = 30;
 
 const GameController = props => {
 
-  const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.gameProps;
+  const { cells, setCells, initCells, setInitCells, gridSize, setGridSize } = props.gameProps;
   const [isRunning, setIsRunning] = useState(false);
   const [isClear, setIsClear] = useState(true);
   const [generations, setGenerations] = useState(0);
@@ -54,7 +54,7 @@ const GameController = props => {
   };
 
   const clearCells = () => {
-    clear();
+    setCells('clear');
     setIsClear(true);
   };
 
@@ -72,7 +72,7 @@ const GameController = props => {
     if (input > maxGrid) {
       input = maxGrid;
     }
-    setGridSize(input);
+    setCells('gridsize', input);
   };
 
   const handleRange = e => {
