@@ -10,7 +10,7 @@ const StyledCell = styled.div`
 const Cell = props => {
 
   const { cell, rowIndex, columnIndex } = props;
-  const { cellSize, setCurrentXY, cellClick } = props.gridProps;
+  const { cellSize, setCurrentXY, cellClick } = props.cellProps;
 
   return (
     <StyledCell

@@ -3,7 +3,9 @@ import { calculateCells } from '../functions/calculateCells';
 
 const speed1 = 500;
 const speed2 = 250;
-const speed3 = 100;
+const speed3 = 1;
+const minGrid = 4;
+const maxGrid = 30;
 
 const GameController = props => {
 
@@ -24,6 +26,7 @@ const GameController = props => {
 
   useEffect(() => {
     setInputSize(gridSize);
+    setGenerations(0);
   }, [gridSize]);
 
   const step = () => {
@@ -57,19 +60,18 @@ const GameController = props => {
 
   const handleInput = e => {
     let input = Number(e.target.value);
-    const min = Number(e.target.min);
-    const max = Number(e.target.max);
-    if (input < min) {
-      input = min;
-    }
-    if (input > max) {
-      input = max;
-    }
     setInputSize(input);
   };
 
   const handleChangeGridSize = e => {
-    setGridSize(inputSize);
+    let input = inputSize;
+    if (input < minGrid) {
+      input = minGrid;
+    }
+    if (input > maxGrid) {
+      input = maxGrid;
+    }
+    setGridSize(input);
   };
 
   const handleRange = e => {
@@ -106,8 +108,8 @@ const GameController = props => {
         <br />
             <input
               type='number'
-              min='4'
-              max='30'
+              min={minGrid}
+              max={maxGrid}
               value={inputSize}
               onChange={handleInput}
             ></input>

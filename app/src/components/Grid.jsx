@@ -1,16 +1,20 @@
 import React from 'react';
-import CellRow from './CellRow';
+import Cell from './Cell';
 
 const Grid = props => {
 
-  const { containerSize, gridSize, cells } = props.gridProps;
-
+  const { containerSize, gridSize, cells, cellSize, setCurrentXY, cellClick } = props.gridProps;
+  const cellProps = { cellSize, setCurrentXY, cellClick };
   return (
-    <div 
-    className='Grid' 
-    style={{ 'width': `${containerSize}px`, 'height': `${containerSize}px` }}
+    <div
+      className='Grid'
+      style={{ 'width': `${containerSize}px`, 'height': `${containerSize}px` }}
     >
-      {cells && cells.map((row, i) => <CellRow key={`row:${i}`} row={row} rowIndex={i} gridProps={props.gridProps} />)}
+      {cells && cells.map((row, rI) => (
+        <div className='CellRow'>
+          {row.map((cell, cI) => <Cell key={`cell:${rI},${cI}`} rowIndex={rI} columnIndex={cI} cell={cell} cellProps={cellProps} />)}
+        </div>
+      ))}
     </div>
   );
 };
