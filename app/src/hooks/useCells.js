@@ -39,7 +39,6 @@ export const useCells = () => {
         cells: createGrid(cellsState.gridSize)
       });
     } else if (input === 'gridsize') {
-      console.log(input, gridSize);
       setCellsState({
         ...cellsState,
         cells: createGrid(gridSize),
