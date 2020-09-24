@@ -104,6 +104,7 @@ const GameController = props => {
         </button>
         <br />
         <button
+          className='_primary'
           disabled={!isRunning}
           onClick={pauseGame}
         >
@@ -111,7 +112,6 @@ const GameController = props => {
         </button>
         <br />
         <button
-          className='_primary'
           disabled={isClear}
           onClick={stopGame}
         >
