@@ -111,6 +111,7 @@ const GameController = props => {
         </button>
         <br />
         <button
+          className='_primary'
           disabled={isClear}
           onClick={stopGame}
         >
