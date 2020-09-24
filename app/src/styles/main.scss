@@ -148,4 +148,8 @@ header {
 
 .About {
   margin: 4rem auto;
+  
+  @media #{$tablet-down} {
+    width: 80%;
+  }
 }
