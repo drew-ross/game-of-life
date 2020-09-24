@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { calculateCells } from '../functions/calculateCells';
 
+const speed1 = 500;
+const speed2 = 250;
+const speed3 = 100;
+
 const GameController = props => {
 
-  const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.cellProps;
+  const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.gameProps;
   const [isRunning, setIsRunning] = useState(false);
   const [isClear, setIsClear] = useState(true);
   const [generations, setGenerations] = useState(0);
   const [inputSize, setInputSize] = useState(gridSize);
-  const [speedInterval, setSpeedInterval] = useState(500);
+  const [speedInterval, setSpeedInterval] = useState(speed2);
   const [speedRange, setSpeedRange] = useState(2);
 
   useEffect(() => {
@@ -73,13 +77,13 @@ const GameController = props => {
       setSpeedRange(Number(e.target.value));
       switch (Number(e.target.value)) {
         case 1:
-          setSpeedInterval(1000);
+          setSpeedInterval(speed1);
           break;
         case 2:
-          setSpeedInterval(500);
+          setSpeedInterval(speed2);
           break;
         case 3:
-          setSpeedInterval(150);
+          setSpeedInterval(speed3);
         default:
           break;
       }

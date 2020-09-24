@@ -29,9 +29,9 @@ const App = () => {
     }
   }, [currentXY, mouseDown]);
 
-  const cellClick = (alive, active) => {
-    setCellTo(alive);
-    setMouseDown(active);
+  const cellClick = (isAlive, isMouseDown) => {
+    setCellTo(isAlive);
+    setMouseDown(isMouseDown);
   };
 
   const selectPreset = (data) => {
@@ -48,7 +48,7 @@ const App = () => {
     cellClick,
   };
 
-  const cellProps = {
+  const gameProps = {
     cells,
     setCells,
     initCells,
@@ -62,7 +62,7 @@ const App = () => {
     <div className='App'>
       <Header />
       <div className='css-grid'>
-        <GameController cellProps={cellProps} />
+        <GameController gameProps={gameProps} />
         <Grid gridProps={gridProps} />
         <PresetList selectPreset={selectPreset} />
       </div>
