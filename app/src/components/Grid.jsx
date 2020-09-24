@@ -8,12 +8,13 @@ const Grid = props => {
   return (
     <div
       className='Grid'
-      style={{ 'width': `${containerSize}px`, 'height': `${containerSize}px` }}
       onMouseLeave={() => setMouseDown(false)}
     >
       {cells && cells.map((row, rI) => (
-        <div className='CellRow' key={`row:${rI}`}>
-          {row.map((cell, cI) => <Cell key={`cell:${rI},${cI}`} rowIndex={rI} columnIndex={cI} cell={cell} cellProps={cellProps} />)}
+        <div className='CellRow' id={`row:${rI}`} key={`row:${rI}`} style={{ height: `${cellSize}%` }}>
+          {row.map((cell, cI) => {
+            return <Cell key={`cell:${rI},${cI}`} rowIndex={rI} columnIndex={cI} cell={cell} cellProps={cellProps} />;
+          })}
         </div>
       ))}
     </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const containerSize = 600;
-const defaultGridSize = 15;
+const defaultGridSize = 25;
 
 export const useCells = () => {
 
@@ -64,5 +64,5 @@ const createGrid = input => {
 };
 
 const calculateCellSize = gridSize => {
-  return containerSize / gridSize - 1
+  return 100 / gridSize
 }
