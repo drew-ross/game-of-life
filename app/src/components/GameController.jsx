@@ -3,7 +3,7 @@ import { calculateCells } from '../functions/calculateCells';
 
 const speed1 = 500;
 const speed2 = 250;
-const speed3 = 1;
+const speed3 = 30;
 const minGrid = 4;
 const maxGrid = 30;
 
