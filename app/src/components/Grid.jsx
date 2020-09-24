@@ -12,7 +12,7 @@ const Grid = props => {
       onMouseLeave={() => setMouseDown(false)}
     >
       {cells && cells.map((row, rI) => (
-        <div className='CellRow'>
+        <div className='CellRow' key={`row:${rI}`}>
           {row.map((cell, cI) => <Cell key={`cell:${rI},${cI}`} rowIndex={rI} columnIndex={cI} cell={cell} cellProps={cellProps} />)}
         </div>
       ))}

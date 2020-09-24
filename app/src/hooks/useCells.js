@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 const containerSize = 600;
+const defaultGridSize = 25;
 
 export const useCells = () => {
 
-  const [cellsState, setCellsState] = useState({ 
-    cells: createGrid(25), 
-    gridSize: 25,
-    cellSize: containerSize / 25 - 1
+  const [cellsState, setCellsState] = useState({
+    cells: createGrid(defaultGridSize),
+    gridSize: defaultGridSize,
+    cellSize: calculateCellSize(defaultGridSize)
   });
   const { cells, gridSize, cellSize } = cellsState;
 
@@ -28,19 +29,22 @@ export const useCells = () => {
         setCellsState({
           ...cellsState,
           cells: input,
-          gridSize: 25,
-          cellSize: containerSize / 25 - 1
+          gridSize: defaultGridSize,
+          cellSize: calculateCellSize(defaultGridSize)
         });
       }
     } else if (input === 'clear') {
-      setCells(createGrid(gridSize));
+      setCellsState({
+        ...cellsState,
+        cells: createGrid(cellsState.gridSize)
+      });
     } else if (input === 'gridsize') {
-      console.log(input)
+      console.log(input, gridSize);
       setCellsState({
         ...cellsState,
         cells: createGrid(gridSize),
-        gridSize: input,
-        cellSize: containerSize / gridSize - 1
+        gridSize: gridSize,
+        cellSize: calculateCellSize(gridSize)
       });
     }
   };
@@ -59,3 +63,7 @@ const createGrid = input => {
   }
   return grid;
 };
+
+const calculateCellSize = gridSize => {
+  return containerSize / gridSize - 1
+}
