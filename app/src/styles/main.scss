@@ -35,6 +35,9 @@ header {
   h1 {
     padding: 2rem 0;
   }
+  @media #{$tablet-down} {
+    width: 80%;
+  }
 }
 
 .css-grid {
@@ -43,7 +46,7 @@ header {
   display: grid;
   grid-template-areas: "controller grid presets";
   grid-template-columns: 28rem auto 28rem;
-  @media #{$tablet-mobile} {
+  @media #{$tablet-down} {
     grid-template-columns: none;
     grid-template-areas:
       "presets"
@@ -57,7 +60,7 @@ header {
   justify-self: end;
   grid-area: controller;
 
-  @media #{$tablet-mobile} {
+  @media #{$tablet-down} {
     @include flex(column, center, center);
     justify-self: center;
 
@@ -81,8 +84,12 @@ header {
   background: lighten($color-secondary, 20);
   @include shadow();
 
-  @media #{$tablet-mobile} {
+  @media #{$tablet-down} {
     margin: 3rem auto;
+  }
+  @media #{$mobile-small-down} {
+    width: 40rem;
+    height: 40rem;
   }
 }
 
@@ -92,7 +99,7 @@ header {
   justify-self: start;
   grid-area: presets;
 
-  @media #{$tablet-mobile} {
+  @media #{$tablet-down} {
     justify-self: center;
   }
 }
@@ -114,6 +121,9 @@ header {
   }
   &:active {
     outline: 2px solid white;
+  }
+  @media #{$tablet-down} {
+    margin-top: 1rem;
   }
 }
 
