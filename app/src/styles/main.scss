@@ -41,7 +41,7 @@ header {
 }
 
 .css-grid {
-  width: 120rem;
+  width: 130rem;
   margin: 3rem auto;
   display: grid;
   grid-template-areas: "controller grid presets";
@@ -77,8 +77,9 @@ header {
 }
 
 .Grid {
-  width: 60rem;
-  height: 60rem;
+  padding: 1rem;
+  width: 65rem;
+  height: 65rem;
   margin: -2rem auto 0;
   grid-area: grid;
   background: lighten($color-secondary, 20);
@@ -86,6 +87,10 @@ header {
 
   @media #{$tablet-down} {
     margin: 3rem auto;
+  }
+  @media #{$mobile-med-down} {
+    width: 55rem;
+    height: 55rem;
   }
   @media #{$mobile-small-down} {
     width: 40rem;
