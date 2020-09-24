@@ -46,6 +46,7 @@ const App = () => {
     cellSize,
     setCurrentXY,
     cellClick,
+    setMouseDown,
   };
 
   const gameProps = {

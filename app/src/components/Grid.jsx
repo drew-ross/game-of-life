@@ -3,12 +3,13 @@ import Cell from './Cell';
 
 const Grid = props => {
 
-  const { containerSize, gridSize, cells, cellSize, setCurrentXY, cellClick } = props.gridProps;
+  const { containerSize, setMouseDown, cells, cellSize, setCurrentXY, cellClick } = props.gridProps;
   const cellProps = { cellSize, setCurrentXY, cellClick };
   return (
     <div
       className='Grid'
       style={{ 'width': `${containerSize}px`, 'height': `${containerSize}px` }}
+      onMouseLeave={() => setMouseDown(false)}
     >
       {cells && cells.map((row, rI) => (
         <div className='CellRow'>
