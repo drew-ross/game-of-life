@@ -87,6 +87,7 @@ const GameController = props => {
           break;
         case 3:
           setSpeedInterval(speed3);
+          break;
         default:
           break;
       }
@@ -110,6 +111,7 @@ const GameController = props => {
         </button>
         <br />
         <button
+          className='_primary'
           disabled={isClear}
           onClick={stopGame}
         >

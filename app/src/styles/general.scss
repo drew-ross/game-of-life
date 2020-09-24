@@ -59,6 +59,7 @@ button {
   }
   &:disabled {
     background: gray;
+    color: $color-dark;
     cursor: not-allowed;
   }
 }
