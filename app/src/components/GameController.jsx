@@ -64,6 +64,7 @@ const GameController = props => {
   };
 
   const handleChangeGridSize = e => {
+    e.preventDefault();
     let input = inputSize;
     if (input < minGrid) {
       input = minGrid;
@@ -106,13 +107,15 @@ const GameController = props => {
         <div className='container _small _noselect'>
           <label>Size:
         <br />
-            <input
-              type='number'
-              min={minGrid}
-              max={maxGrid}
-              value={inputSize}
-              onChange={handleInput}
-            ></input>
+            <form onSubmit={handleChangeGridSize}>
+              <input
+                type='number'
+                min={minGrid}
+                max={maxGrid}
+                value={inputSize}
+                onChange={handleInput}
+              ></input>
+            </form>
           </label>
         </div>
         <br />
