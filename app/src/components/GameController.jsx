@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { calculateCells } from '../functions/calculateCells';
 
+const speed1 = 500;
+const speed2 = 250;
+const speed3 = 30;
+const minGrid = 4;
+const maxGrid = 30;
+
 const GameController = props => {
 
-  const { cells, setCells, initCells, setInitCells, clear, gridSize, setGridSize } = props.cellProps;
+  const { cells, setCells, initCells, setInitCells, gridSize } = props.gameProps;
   const [isRunning, setIsRunning] = useState(false);
   const [isClear, setIsClear] = useState(true);
   const [generations, setGenerations] = useState(0);
   const [inputSize, setInputSize] = useState(gridSize);
-  const [speedInterval, setSpeedInterval] = useState(500);
+  const [speedInterval, setSpeedInterval] = useState(speed2);
   const [speedRange, setSpeedRange] = useState(2);
 
   useEffect(() => {
@@ -20,6 +26,7 @@ const GameController = props => {
 
   useEffect(() => {
     setInputSize(gridSize);
+    setGenerations(0);
   }, [gridSize]);
 
   const step = () => {
@@ -47,25 +54,25 @@ const GameController = props => {
   };
 
   const clearCells = () => {
-    clear();
+    setCells('clear');
     setIsClear(true);
   };
 
   const handleInput = e => {
     let input = Number(e.target.value);
-    const min = Number(e.target.min);
-    const max = Number(e.target.max);
-    if (input < min) {
-      input = min;
-    }
-    if (input > max) {
-      input = max;
-    }
     setInputSize(input);
   };
 
   const handleChangeGridSize = e => {
-    setGridSize(inputSize);
+    e.preventDefault();
+    let size = inputSize;
+    if (size < minGrid) {
+      size = minGrid;
+    }
+    if (size > maxGrid) {
+      size = maxGrid;
+    }
+    setCells('gridsize', size);
   };
 
   const handleRange = e => {
@@ -73,13 +80,13 @@ const GameController = props => {
       setSpeedRange(Number(e.target.value));
       switch (Number(e.target.value)) {
         case 1:
-          setSpeedInterval(1000);
+          setSpeedInterval(speed1);
           break;
         case 2:
-          setSpeedInterval(500);
+          setSpeedInterval(speed2);
           break;
         case 3:
-          setSpeedInterval(150);
+          setSpeedInterval(speed3);
         default:
           break;
       }
@@ -89,28 +96,49 @@ const GameController = props => {
   return (
     <div className='GameController'>
       <div className='flex-row'>
-        <button className='_primary' disabled={isRunning} onClick={startGame}>Start</button>
+        <button
+          className='_primary'
+          disabled={isRunning}
+          onClick={startGame}>Start
+        </button>
         <br />
-        <button disabled={!isRunning} onClick={pauseGame}>Pause</button>
+        <button
+          disabled={!isRunning}
+          onClick={pauseGame}
+        >
+          Pause
+        </button>
         <br />
-        <button disabled={isClear} onClick={stopGame}>Stop</button>
+        <button
+          disabled={isClear}
+          onClick={stopGame}
+        >
+          Stop
+          </button>
       </div>
       <br />
       <div className='flex-row'>
         <div className='container _small _noselect'>
           <label>Size:
         <br />
-            <input
-              type='number'
-              min='4'
-              max='30'
-              value={inputSize}
-              onChange={handleInput}
-            ></input>
+            <form onSubmit={handleChangeGridSize}>
+              <input
+                type='number'
+                min={minGrid}
+                max={maxGrid}
+                value={inputSize}
+                onChange={handleInput}
+              ></input>
+            </form>
           </label>
         </div>
         <br />
-        <button disabled={isRunning} onClick={handleChangeGridSize}>Resize</button>
+        <button
+          disabled={isRunning}
+          onClick={handleChangeGridSize}
+        >
+          Resize
+          </button>
         <br />
         <div className='container _small _vmargin _noselect'>
           <label>Speed {speedRange}
@@ -128,7 +156,13 @@ const GameController = props => {
       </div>
       <br />
       <div className='flex-row'>
-        <button className='_secondary' disabled={isRunning} onClick={clearCells}>Clear</button>
+        <button
+          className='_secondary'
+          disabled={isRunning}
+          onClick={clearCells}
+        >
+          Clear
+          </button>
         <p className='container _small'>
           <span className='font-smaller'>Generations:</span>
           <br />

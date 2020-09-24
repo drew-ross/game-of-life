@@ -4,11 +4,11 @@ import { presets } from '../presets/presets';
 
 const PresetList = props => {
 
-  const { selectPreset } = props;
+  const { setCells } = props;
 
   return (
     <div className='PresetList'>
-      {presets.map(preset => <Preset key={preset.name} preset={preset} selectPreset={selectPreset} />)}
+      {presets.map(preset => <Preset key={preset.name} preset={preset} setCells={setCells} />)}
     </div>
   );
 };

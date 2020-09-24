@@ -10,18 +10,11 @@ const containerSize = 600;
 
 const App = () => {
 
-  const [gridSize, setGridSize] = useState(25);
   const [mouseDown, setMouseDown] = useState(false);
-  const [cells, changeCell, setCells, clear] = useCells(gridSize);
-  const [initCells, , setInitCells] = useCells(gridSize);
+  const [cells, setCells, changeCell, gridSize, cellSize] = useCells();
+  const [initCells, setInitCells] = useCells(gridSize);
   const [currentXY, setCurrentXY] = useState({ row: null, col: null });
   const [cellTo, setCellTo] = useState(false);
-  const [cellSize, setCellSize] = useState(containerSize / gridSize - 1);
-
-  useEffect(() => {
-    setCellSize(containerSize / gridSize - 1);
-    clear(gridSize);
-  }, [gridSize]);
 
   useEffect(() => {
     if (mouseDown) {
@@ -29,14 +22,9 @@ const App = () => {
     }
   }, [currentXY, mouseDown]);
 
-  const cellClick = (alive, active) => {
-    setCellTo(alive);
-    setMouseDown(active);
-  };
-
-  const selectPreset = (data) => {
-    setGridSize(25);
-    setCells(data);
+  const cellClick = (isAlive, isMouseDown) => {
+    setCellTo(isAlive);
+    setMouseDown(isMouseDown);
   };
 
   const gridProps = {
@@ -46,25 +34,24 @@ const App = () => {
     cellSize,
     setCurrentXY,
     cellClick,
+    setMouseDown,
   };
 
-  const cellProps = {
+  const gameProps = {
     cells,
     setCells,
     initCells,
     setInitCells,
-    clear,
     gridSize,
-    setGridSize
   };
 
   return (
     <div className='App'>
       <Header />
       <div className='css-grid'>
-        <GameController cellProps={cellProps} />
+        <GameController gameProps={gameProps} />
         <Grid gridProps={gridProps} />
-        <PresetList selectPreset={selectPreset} />
+        <PresetList setCells={setCells} />
       </div>
         <About />
     </div>
