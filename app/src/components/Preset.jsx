@@ -7,7 +7,7 @@ const Preset = props => {
 
   return (
     <div
-      className='Preset container _preset'
+      className='Preset container container--preset'
       onClick={() => setCells(data)}
     >
       <p>{name}</p>

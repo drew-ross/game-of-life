@@ -1,29 +1,41 @@
-html {
-  background: $color-secondary;
-}
-
 .container {
   text-align: center;
   @include shadow();
   background: $color-main;
-  padding: .5rem;
+  padding: 0.5rem;
   max-width: 90rem;
 
-  &._small {
+  &.container--small {
     width: 12rem;
   }
-  &._vmargin {
+  &.container--vmargin {
     margin: 2rem 0;
   }
-  &._noselect {
+  &.container--noselect {
     -webkit-user-select: none;
   }
-  &._nomax {
+  &.container--nomax {
     max-width: none;
   }
-  &._preset {
+  &.container--preset {
     width: 12rem;
     height: 16rem;
+  }
+}
+
+.css-grid {
+  width: 130rem;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-areas: "controller grid presets";
+  grid-template-columns: 28rem auto 28rem;
+
+  @media #{$tablet-down} {
+    grid-template-columns: none;
+    grid-template-areas:
+      "presets"
+      "grid"
+      "controller";
   }
 }
 
@@ -40,19 +52,20 @@ header {
   }
 }
 
-.css-grid {
-  width: 130rem;
-  margin: 3rem auto;
-  display: grid;
-  grid-template-areas: "controller grid presets";
-  grid-template-columns: 28rem auto 28rem;
-  
-  @media #{$tablet-down} {
-    grid-template-columns: none;
-    grid-template-areas:
-      "presets"
-      "grid"
-      "controller";
+.content {
+  ul,
+  p {
+    font-family: $font-content;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: left;
+    margin: 1rem 4rem 4rem;
+  }
+  li {
+    margin-left: 2rem;
+  }
+  h2 {
+    margin: 2rem;
   }
 }
 
@@ -150,7 +163,7 @@ header {
 
 .About {
   margin: 4rem auto;
-  
+
   @media #{$tablet-down} {
     width: 80%;
   }
