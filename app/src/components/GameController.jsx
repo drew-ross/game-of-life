@@ -5,7 +5,7 @@ const speed1 = 500;
 const speed2 = 250;
 const speed3 = 100;
 const minGrid = 4;
-const maxGrid = 30;
+const maxGrid = 50;
 
 const GameController = props => {
 

@@ -46,6 +46,7 @@ header {
   display: grid;
   grid-template-areas: "controller grid presets";
   grid-template-columns: 28rem auto 28rem;
+  
   @media #{$tablet-down} {
     grid-template-columns: none;
     grid-template-areas:
@@ -106,6 +107,7 @@ header {
 
   @media #{$tablet-down} {
     justify-self: center;
+    justify-content: center;
   }
 }
 
