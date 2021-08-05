@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-const containerSize = 600;
 const defaultGridSize = 25;
 
 export const useCells = () => {
