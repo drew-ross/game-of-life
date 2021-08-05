@@ -20,6 +20,7 @@ const App = () => {
     if (mouseDown) {
       changeCell(currentXY.row, currentXY.col, cellTo);
     }
+    // eslint-disable-next-line
   }, [currentXY, mouseDown]);
 
   const cellClick = (isAlive, isMouseDown) => {

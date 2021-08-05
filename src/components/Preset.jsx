@@ -11,7 +11,7 @@ const Preset = props => {
       onClick={() => setCells(data)}
     >
       <p>{name}</p>
-      <img src={image} />
+      <img alt={name} src={image} />
     </div>
   );
 };
