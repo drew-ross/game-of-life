@@ -98,13 +98,13 @@ const GameController = props => {
     <div className='GameController'>
       <div className='flex-row'>
         <button
-          className='_primary'
+          className='btn--primary'
           disabled={isRunning}
           onClick={startGame}>Start
         </button>
         <br />
         <button
-          className='_primary'
+          className='btn--primary'
           disabled={!isRunning}
           onClick={pauseGame}
         >
@@ -120,7 +120,7 @@ const GameController = props => {
       </div>
       <br />
       <div className='flex-row'>
-        <div className='container _small _noselect'>
+        <div className='container container--small container--noselect'>
           <label>Size:
         <br />
             <form onSubmit={handleChangeGridSize}>
@@ -142,7 +142,7 @@ const GameController = props => {
           Resize
           </button>
         <br />
-        <div className='container _small _vmargin _noselect'>
+        <div className='container container--small container--vmargin container--noselect'>
           <label>Speed {speedRange}
             <br />
             <input
@@ -159,13 +159,13 @@ const GameController = props => {
       <br />
       <div className='flex-row'>
         <button
-          className='_secondary'
+          className='btn--secondary'
           disabled={isRunning}
           onClick={clearCells}
         >
           Clear
           </button>
-        <p className='container _small'>
+        <p className='container container--small'>
           <span className='font-smaller'>Generations:</span>
           <br />
           <span className='font-bigger'>{generations}</span>

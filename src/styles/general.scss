@@ -2,6 +2,10 @@
   color: $color-dark;
 }
 
+html {
+  background: $color-secondary;
+}
+
 h1,
 h2 {
   font-family: $font-main;
@@ -39,11 +43,11 @@ button {
   border: none;
   @include shadow();
 
-  &._primary {
+  &.btn--primary {
     background: $color-compliment;
     color: $color-light;
   }
-  &._secondary {
+  &.btn--secondary {
     background: $color-lowlight;
   }
   &:hover {
@@ -106,20 +110,4 @@ input[type="range"] {
 
 a {
   color: darken($color-lowlight, 30);
-}
-
-.content {
-  ul, p {
-    font-family: $font-content;
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-align: left;
-    margin: 1rem 4rem 4rem;
-  }
-  li {
-    margin-left: 2rem;
-  }
-  h2 {
-    margin: 2rem;
-  }
 }
