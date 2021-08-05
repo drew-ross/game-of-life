@@ -7,9 +7,9 @@ const About = () => {
       <h2>Rules</h2>
       <ul>
         <li>Any live cell with fewer than two neighbors dies</li>
-        <li>Any live cell with more than three neighbours dies</li>
-        <li>Any live cell with two or three live neighbours lives</li>
-        <li>Any dead cell with exactly three live neighbours will come to life</li>
+        <li>Any live cell with more than three neighbors dies</li>
+        <li>Any live cell with two or three live neighbors lives</li>
+        <li>Any dead cell with exactly three live neighbors will come to life</li>
       </ul>
       <h2>About the game</h2>
       <p>This is a zero-player "game" invented by late mathematician John H. Conway. 
